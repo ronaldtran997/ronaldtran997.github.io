@@ -18,6 +18,21 @@
         console.log('Init Data', initData)
         console.log('initDataUnsafe', initDataUnsafe)
 
+        const userAgent = navigator.userAgent.toLowerCase();
+
+        if (userAgent.includes('telegram')) {
+            console.log('User is using Telegram app');
+        } else if (window.Telegram && window.Telegram.WebApp) {
+            const platform = Telegram.WebApp.platform;
+            if (platform === 'tdesktop' || platform === 'android' || platform === 'ios') {
+                console.log('User is using Telegram app');
+            } else {
+                console.log('User is using Telegram web');
+            }
+        } else {
+            console.log('User is using Telegram web');
+        }
+
         // Send user data to server for further processing
         // fetch('/auth', {
         //     method: 'POST',
