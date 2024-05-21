@@ -22,10 +22,12 @@
 
         if (userAgent.includes('telegram')) {
             console.log('User is using Telegram app');
+            alert('Telegram app');
         } else if (window.Telegram && window.Telegram.WebApp) {
             const platform = Telegram.WebApp.platform;
             if (platform === 'tdesktop' || platform === 'android' || platform === 'ios') {
                 console.log('User is using Telegram app');
+                alert('Telegram app');
             } else {
                 console.log('User is using Telegram web');
             }
