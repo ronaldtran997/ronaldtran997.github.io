@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Welcome to Telegram Web App</h1>
+    <p id="msg"></p>
     <script>
         
         Telegram.WebApp.ready();
@@ -19,20 +20,23 @@
         console.log('initDataUnsafe', initDataUnsafe)
 
         const userAgent = navigator.userAgent.toLowerCase();
+        var msg = document.getElementById('msg');
 
         if (userAgent.includes('telegram')) {
             console.log('User is using Telegram app');
-            alert('Telegram app');
+            msg.append("Use APP");
         } else if (window.Telegram && window.Telegram.WebApp) {
             const platform = Telegram.WebApp.platform;
             if (platform === 'tdesktop' || platform === 'android' || platform === 'ios') {
                 console.log('User is using Telegram app');
-                alert('Telegram app');
+                msg.append("Use APP");
             } else {
                 console.log('User is using Telegram web');
+                msg.append("Use WEB");
             }
         } else {
             console.log('User is using Telegram web');
+            msg.append("Use WEB");
         }
 
         // Send user data to server for further processing
